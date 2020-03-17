@@ -10,8 +10,8 @@ Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Calculator)
 {
-    ui->setupUi(this);
-    ui->Display->setText(QString::number(curVal));
+    ui -> setupUi(this);
+    ui -> Display -> setText(QString::number(curVal));
     QPushButton *numButtons[10];
 
     for (int i=0;i<10;i++){
@@ -20,12 +20,16 @@ Calculator::Calculator(QWidget *parent)
         connect(numButtons[i], SIGNAL(released()), this, SLOT(NumPressed()));
     }
     connect(ui->Button_Point, SIGNAL(released()), this, SLOT(PointPressed()));
-    connect(ui->Button_Add, SIGNAL(released()), this, SLOT(OpPressed()));
-    connect(ui->Button_Subtract, SIGNAL(released()), this, SLOT(OpPressed()));
-    connect(ui->Button_Multiply, SIGNAL(released()), this, SLOT(OpPressed()));
-    connect(ui->Button_Divide, SIGNAL(released()), this, SLOT(OpPressed()));
+    connect(ui->Button_Add, SIGNAL(released()), this, SLOT(BinaryOpPressed()));
+    connect(ui->Button_Subtract, SIGNAL(released()), this, SLOT(BinaryOpPressed()));
+    connect(ui->Button_Multiply, SIGNAL(released()), this, SLOT(BinaryOpPressed()));
+    connect(ui->Button_Divide, SIGNAL(released()), this, SLOT(BinaryOpPressed()));
     connect(ui->Button_Equal, SIGNAL(released()), this, SLOT(EqPressed()));
-    connect(ui->Button_Sqrt, SIGNAL(released()), this, SLOT(SqrtPressed()));
+    connect(ui->Button_Sqrt, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
+    connect(ui->Button_Sin, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
+    connect(ui->Button_Cos, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
+    connect(ui->Button_Tan, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
+    connect(ui->Button_Cot, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
 
     setWindowTitle(tr("Calculator OOP"));
 }
@@ -48,7 +52,7 @@ void Calculator::NumPressed(){
     }
 }
 
-void Calculator::OpPressed(){
+void Calculator::BinaryOpPressed(){
     QPushButton *button = (QPushButton *)sender();
     QString op = button -> text();
     QString display = ui -> Display -> text();
@@ -140,11 +144,26 @@ void Calculator::EqPressed(){
     }
 
     curVal = curSum;
-    ui->Display->setText(QString::number(curVal, 'g', 16));
+    ui -> Display -> setText(QString::number(curVal, 'g', 16));
 }
 
-void Calculator::SqrtPressed(){
-
+void Calculator::UnaryOpPressed(){
+    QPushButton *button = (QPushButton *)sender();
+    QString op = button -> text();
+    
+    EqPressed();
+    if (op == "sqrt"){
+        curVal = sqrt(curVal);
+    } else if (op == "sin"){
+        curVal = sin(curVal);
+    } else if (op == "cos"){
+        curVal = sin(curVal);
+    } else if (op == "tan"){
+        curVal = tan(curVal);
+    } else{
+        curVal = 1.0 / tan(curVal);
+    }
+    ui -> Display -> setText(QString::number(curVal, 'g', 16));
 }
 
 void Calculator::PointPressed(){

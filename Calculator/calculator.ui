@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>520</width>
-    <height>315</height>
+    <height>503</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,9 +51,9 @@ QPushButton:pressed{
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="5" column="1">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="Button_Cos">
       <property name="text">
-       <string>PushButton</string>
+       <string>cos</string>
       </property>
      </widget>
     </item>
@@ -134,9 +134,9 @@ QPushButton:pressed{
      </widget>
     </item>
     <item row="5" column="2">
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="Button_Tan">
       <property name="text">
-       <string>PushButton</string>
+       <string>tan</string>
       </property>
      </widget>
     </item>
@@ -167,9 +167,9 @@ QPushButton:pressed{
      </widget>
     </item>
     <item row="5" column="3">
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="Button_Cot">
       <property name="text">
-       <string>PushButton</string>
+       <string>cot</string>
       </property>
      </widget>
     </item>
@@ -250,9 +250,9 @@ QPushButton:pressed{
      </widget>
     </item>
     <item row="5" column="0">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="Button_Sin">
       <property name="text">
-       <string>PushButton</string>
+       <string>sin</string>
       </property>
      </widget>
     </item>

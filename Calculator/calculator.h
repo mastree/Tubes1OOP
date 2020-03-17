@@ -24,9 +24,9 @@ private:
 
 private slots:
     void NumPressed();
-    void OpPressed();
+    void BinaryOpPressed();
     void EqPressed();
-    void SqrtPressed();
+    void UnaryOpPressed();
     void PointPressed();
 };
 #endif // CALCULATOR_H
