@@ -1403,12 +1403,12 @@ calculator.h
 D:/_OOP/Tubes1OOP/Calculator/calculator.h
 ./ui_calculator.h
 D:/_OOP/Tubes1OOP/Calculator/ui_calculator.h
-bits/stdc++.h
--
 
 D:/_OOP/Tubes1OOP/Calculator/calculator.h
 QMainWindow
 -
 CalcParser.h
 D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
+bits/stdc++.h
+-
 

@@ -1,14 +1,15 @@
 #include "calculator.h"
 #include "./ui_calculator.h"
-#include <bits/stdc++.h>
-
-using namespace std;
-
-double curVal = 0.0;
 
 Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Calculator)
+    , curVal(0.0)
+    , opPressed(0)
+    , storedAnsExist(0)
+    , clearDisplay(1)
+    , PI(acos(-1))
+    , isError(0)
 {
     ui -> setupUi(this);
     ui -> Display -> setText(QString::number(curVal));
@@ -30,6 +31,10 @@ Calculator::Calculator(QWidget *parent)
     connect(ui->Button_Cos, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
     connect(ui->Button_Tan, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
     connect(ui->Button_Cot, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
+    connect(ui->Button_Ans, SIGNAL(released()), this, SLOT(AnsPressed()));
+    connect(ui->Button_AC, SIGNAL(released()), this, SLOT(ACPressed()));
+    connect(ui->Button_MR, SIGNAL(released()), this, SLOT(MRPressed()));
+    connect(ui->Button_MC, SIGNAL(released()), this, SLOT(MCPressed()));
 
     setWindowTitle(tr("Calculator OOP"));
 }
@@ -40,38 +45,194 @@ Calculator::~Calculator()
 }
 
 void Calculator::NumPressed(){
+    if (isError){
+        return;
+    }
     QPushButton *button = (QPushButton *)sender();
     QString num = button -> text();
     QString display = ui -> Display -> text();
     
-    if (display == "0" || display == "0.0"){
+    if (clearDisplay){
+        if (display == "0" || display == "0.0"){
+            ui -> Display -> setText(num);
+        } else{
+            QString baru = display + num;
+            ui -> Display -> setText(baru);
+        }
+    } else if (!opPressed){
         ui -> Display -> setText(num);
-    } else{
-        QString baru = display + num;
-        ui -> Display -> setText(baru);
-    }
+        clearDisplay = 1;
+    } 
+    opPressed = 0;
 }
 
 void Calculator::BinaryOpPressed(){
+    if (isError){
+        return;
+    }
     QPushButton *button = (QPushButton *)sender();
     QString op = button -> text();
     QString display = ui -> Display -> text();
  
     QString baru = display + " " + op + " ";
     ui -> Display -> setText(baru);
+    clearDisplay = 1;
+    opPressed = 1;
 }
 
 void Calculator::EqPressed(){
+    if (isError){
+        return;
+    }
+    double curSum;
+
+    try{
+        curSum = DisplayValue();
+    } catch (const char * er){
+        QString mass = er;
+        ui -> Display -> setText(mass);
+        isError = 1;
+        return;
+    }
+
+    curVal = curSum;
+    lastAns = curVal;
+    ui -> Display -> setText(QString::number(curVal, 'g', 16));
+    clearDisplay = 0;
+    opPressed = 0;
+    storedAnsExist = 1;
+}
+
+void Calculator::UnaryOpPressed(){
+    if (isError){
+        return;
+    }
+    QPushButton *button = (QPushButton *)sender();
+    QString op = button -> text();
+    double curSum;
+
+    try{
+        curSum = DisplayValue();
+    } catch (const char * er){
+        QString mass = er;
+        ui -> Display -> setText(mass);
+        isError = 1;
+        return;
+    }
+
+    curVal = curSum;
+    if (op == "sqrt"){
+        curVal = sqrt(curVal);
+    } else if (op == "sin"){
+        curVal = sin(curVal * PI / 180);
+    } else if (op == "cos"){
+        curVal = cos(curVal * PI / 180);
+    } else if (op == "tan"){
+        curVal = tan(curVal * PI / 180);
+    } else{
+        curVal = 1.0 / tan(curVal * PI / 180);
+    }
+    lastAns = curVal;
+    ui -> Display -> setText(QString::number(curVal, 'g', 16));
+    clearDisplay = 0;
+    opPressed = 0;
+    storedAnsExist = 1;
+}
+
+void Calculator::PointPressed(){
+    if (isError){
+        return;
+    }
+    QPushButton *button = (QPushButton *)sender();
+    QString num = button -> text();
+    QString display = ui -> Display -> text();
+    
+    if (display == "0" || display == "0.0"){
+        ui -> Display -> setText("0" + num);
+    } else{
+        QString baru = display + num;
+        ui -> Display -> setText(baru);
+    }
+}
+
+void Calculator::AnsPressed(){
+    if (isError){
+        return;
+    }
+    QString display = ui -> Display -> text();
+    if (storedAnsExist){
+        if (opPressed){
+            ui -> Display -> setText(display + QString::number(lastAns, 'g', 16));
+        } else{
+            ui -> Display -> setText(QString::number(lastAns, 'g', 16));
+        }
+        opPressed = 0;
+    }
+}
+
+void Calculator::ACPressed(){
+    isError = 0;
+    curVal = 0;
+    opPressed = 0;
+    clearDisplay = 1;
+    ui -> Display -> setText("0");
+}
+
+void Calculator::MRPressed(){
+    if (isError){
+        return;
+    }
+    if (listOfAns.empty()) return;
+
+    double curAns = listOfAns.front();
+    listOfAns.pop();
+
+    QString display = ui -> Display -> text();
+    if (opPressed){
+        ui -> Display -> setText(display + QString::number(curAns, 'g', 16));
+    } else{
+        ui -> Display -> setText(QString::number(curAns, 'g', 16));
+    }
+    opPressed = 0;
+}
+
+void Calculator::MCPressed(){
+    if (isError){
+        return;
+    }
+    double curSum;
+
+    try{
+        curSum = DisplayValue();
+    } catch (const char * er){
+        QString mass = er;
+        ui -> Display -> setText(mass);
+        isError = 1;
+        return;
+    }
+    listOfAns.push(curSum);
+}
+
+double Calculator::DisplayValue(){
     CalcParser *content = new CalcParser((ui -> Display -> text()).toStdString());
 
-    if (content -> empty()) return;
+    if (content -> empty()) return 0;
 
     double curSum = 0;
     double curMulti = 0;
 
     pair <int, string> now = content -> nextContent();
     if (now.first != 0){
-        throw "Invalid expression: Tidak dimulai dengan angka";
+        if (now.second != "-" || content -> empty()){
+            throw "Invalid expression: Tidak dimulai dengan angka";
+        } else {
+            now = content -> nextContent();
+            if (now.first != 0){
+                throw "Invalid expression: Tidak dimulai dengan angka";
+            } else{
+                now.second = "-" + now.second;
+            }
+        }
     }
 
     if (content -> getLen() % 2){
@@ -89,6 +250,9 @@ void Calculator::EqPressed(){
                 if (lastMultiOP == "*"){
                     curMulti *= stod(now.second);
                 } else{
+                    if (stod(now.second) == 0){
+                        throw "Error: Division by zero";
+                    }
                     curMulti = curMulti / stod(now.second);
                 }
                 lastMultiOP = "";
@@ -118,6 +282,9 @@ void Calculator::EqPressed(){
             if (lastMultiOP == "*"){
                 curMulti *= stod(now.second);
             } else{
+                if (stod(now.second) == 0){
+                    throw "Error: Division by zero";
+                }
                 curMulti = curMulti / stod(now.second);
             }
             lastMultiOP = "";
@@ -143,38 +310,5 @@ void Calculator::EqPressed(){
         curSum -= curMulti;
     }
 
-    curVal = curSum;
-    ui -> Display -> setText(QString::number(curVal, 'g', 16));
-}
-
-void Calculator::UnaryOpPressed(){
-    QPushButton *button = (QPushButton *)sender();
-    QString op = button -> text();
-    
-    EqPressed();
-    if (op == "sqrt"){
-        curVal = sqrt(curVal);
-    } else if (op == "sin"){
-        curVal = sin(curVal);
-    } else if (op == "cos"){
-        curVal = sin(curVal);
-    } else if (op == "tan"){
-        curVal = tan(curVal);
-    } else{
-        curVal = 1.0 / tan(curVal);
-    }
-    ui -> Display -> setText(QString::number(curVal, 'g', 16));
-}
-
-void Calculator::PointPressed(){
-    QPushButton *button = (QPushButton *)sender();
-    QString num = button -> text();
-    QString display = ui -> Display -> text();
-    
-    if (display == "0" || display == "0.0"){
-        ui -> Display -> setText("0" + num);
-    } else{
-        QString baru = display + num;
-        ui -> Display -> setText(baru);
-    }
+    return curSum;
 }
