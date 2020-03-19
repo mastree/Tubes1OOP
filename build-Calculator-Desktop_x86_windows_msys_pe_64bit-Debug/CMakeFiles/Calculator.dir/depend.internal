@@ -109,7 +109,6 @@ CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj
  C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgets-config.h
  C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsglobal.h
  C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidget.h
- D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
  D:/_OOP/Tubes1OOP/Calculator/calculator.h
  D:/_OOP/Tubes1OOP/build-Calculator-Desktop_x86_windows_msys_pe_64bit-Debug/Calculator_autogen/EWIEGA46WW/moc_calculator.cpp
  D:/_OOP/Tubes1OOP/build-Calculator-Desktop_x86_windows_msys_pe_64bit-Debug/Calculator_autogen/mocs_compilation.cpp
@@ -254,6 +253,7 @@ CMakeFiles/Calculator.dir/calculator.cpp.obj
  C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidget.h
  Calculator_autogen/include/ui_calculator.h
  D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
+ D:/_OOP/Tubes1OOP/Calculator/Expression.h
  D:/_OOP/Tubes1OOP/Calculator/calculator.cpp
  D:/_OOP/Tubes1OOP/Calculator/calculator.h
 CMakeFiles/Calculator.dir/main.cpp.obj
@@ -371,6 +371,5 @@ CMakeFiles/Calculator.dir/main.cpp.obj
  C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgets-config.h
  C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsglobal.h
  C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidget.h
- D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
  D:/_OOP/Tubes1OOP/Calculator/calculator.h
  D:/_OOP/Tubes1OOP/Calculator/main.cpp

@@ -1,6 +1,8 @@
 #include "calculator.h"
 #include "./ui_calculator.h"
+#include "CalcParser.h"
 #include "Expression.h"
+
 Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Calculator)
@@ -12,7 +14,7 @@ Calculator::Calculator(QWidget *parent)
     , isError(0)
 {
     ui -> setupUi(this);
-    ui -> Display -> setText(QString::number(curVal));
+    ui -> Display -> setText("0");
     QPushButton *numButtons[10];
 
     for (int i=0;i<10;i++){
@@ -32,7 +34,7 @@ Calculator::Calculator(QWidget *parent)
     connect(ui->Button_Tan, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
     connect(ui->Button_Cot, SIGNAL(released()), this, SLOT(UnaryOpPressed()));
     connect(ui->Button_Ans, SIGNAL(released()), this, SLOT(AnsPressed()));
-    connect(ui->Button_AC, SIGNAL(released()), this, SLOT(ACPressed()));
+    connect(ui->Button_CLEAR, SIGNAL(released()), this, SLOT(CLEARPressed()));
     connect(ui->Button_MR, SIGNAL(released()), this, SLOT(MRPressed()));
     connect(ui->Button_MC, SIGNAL(released()), this, SLOT(MCPressed()));
 
@@ -84,7 +86,7 @@ void Calculator::EqPressed(){
     if (isError){
         return;
     }
-    double curSum;
+    long double curSum;
 
     try{
         curSum = DisplayValue();
@@ -109,7 +111,7 @@ void Calculator::UnaryOpPressed(){
     }
     QPushButton *button = (QPushButton *)sender();
     QString op = button -> text();
-    double curSum;
+    long double curSum;
 
     try{
         curSum = DisplayValue();
@@ -189,7 +191,7 @@ void Calculator::AnsPressed(){
     }
 }
 
-void Calculator::ACPressed(){
+void Calculator::CLEARPressed(){
     isError = 0;
     curVal = 0;
     opPressed = 0;
@@ -203,7 +205,7 @@ void Calculator::MRPressed(){
     }
     if (listOfAns.empty()) return;
 
-    double curAns = listOfAns.front();
+    long double curAns = listOfAns.front();
     listOfAns.pop();
 
     QString display = ui -> Display -> text();
@@ -219,7 +221,7 @@ void Calculator::MCPressed(){
     if (isError){
         return;
     }
-    double curSum;
+    long double curSum;
 
     try{
         curSum = DisplayValue();
@@ -232,13 +234,13 @@ void Calculator::MCPressed(){
     listOfAns.push(curSum);
 }
 
-double Calculator::DisplayValue(){
+long double Calculator::DisplayValue(){
     CalcParser *content = new CalcParser((ui -> Display -> text()).toStdString());
 
     if (content -> empty()) return 0;
 
-    double curSum = 0;
-    double curMulti = 0;
+    long double curSum = 0;
+    long double curMulti = 0;
 
     pair <int, string> now = content -> nextContent();
     if (now.first != 0){

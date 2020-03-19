@@ -2,7 +2,6 @@
 #define CALCULATOR_H
 
 #include <QMainWindow>
-#include "CalcParser.h"
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -10,7 +9,6 @@ using namespace std;
 QT_BEGIN_NAMESPACE
 namespace Ui {
     class Calculator;
-    class CalcParser;
 }
 QT_END_NAMESPACE
 
@@ -19,20 +17,21 @@ class Calculator : public QMainWindow
     Q_OBJECT
 
 public:
-    const double PI;
+    const long double PI;
 
     Calculator(QWidget *parent = nullptr); // nullptr = 0
     ~Calculator();
 
 protected:
-    double curVal;
-    double lastAns;
+    long double curVal; 
+    long double lastAns;
     bool opPressed;
     bool storedAnsExist;
     bool clearDisplay;
     bool isError;
+    long double DisplayValue();
 
-    queue <double> listOfAns;
+    queue <long double> listOfAns;
 
 private:
     Ui::Calculator *ui;
@@ -44,10 +43,9 @@ private slots:
     void UnaryOpPressed();
     void PointPressed();
     void AnsPressed();
-    void ACPressed();
+    void CLEARPressed();
     void MRPressed();
     void MCPressed();
 
-    double DisplayValue();
 };
 #endif // CALCULATOR_H

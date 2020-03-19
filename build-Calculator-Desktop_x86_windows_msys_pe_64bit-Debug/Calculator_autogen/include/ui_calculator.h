@@ -40,7 +40,7 @@ public:
     QPushButton *Button_Multiply;
     QPushButton *Button_Cos;
     QPushButton *Button_8;
-    QPushButton *Button_AC;
+    QPushButton *Button_CLEAR;
     QPushButton *Button_5;
     QPushButton *Button_MC;
     QPushButton *Button_1;
@@ -59,7 +59,7 @@ public:
     {
         if (Calculator->objectName().isEmpty())
             Calculator->setObjectName(QString::fromUtf8("Calculator"));
-        Calculator->resize(520, 503);
+        Calculator->resize(520, 571);
         Calculator->setStyleSheet(QString::fromUtf8("#Display{\n"
 "	height: 100px;\n"
 "	width: 500px;\n"
@@ -214,16 +214,16 @@ public:
 
         gridLayout->addWidget(Button_8, 3, 1, 1, 1);
 
-        Button_AC = new QPushButton(centralwidget);
-        Button_AC->setObjectName(QString::fromUtf8("Button_AC"));
-        sizePolicy.setHeightForWidth(Button_AC->sizePolicy().hasHeightForWidth());
-        Button_AC->setSizePolicy(sizePolicy);
-        Button_AC->setAcceptDrops(false);
-        Button_AC->setAutoFillBackground(false);
-        Button_AC->setStyleSheet(QString::fromUtf8(""));
-        Button_AC->setFlat(false);
+        Button_CLEAR = new QPushButton(centralwidget);
+        Button_CLEAR->setObjectName(QString::fromUtf8("Button_CLEAR"));
+        sizePolicy.setHeightForWidth(Button_CLEAR->sizePolicy().hasHeightForWidth());
+        Button_CLEAR->setSizePolicy(sizePolicy);
+        Button_CLEAR->setAcceptDrops(false);
+        Button_CLEAR->setAutoFillBackground(false);
+        Button_CLEAR->setStyleSheet(QString::fromUtf8(""));
+        Button_CLEAR->setFlat(false);
 
-        gridLayout->addWidget(Button_AC, 2, 0, 1, 1);
+        gridLayout->addWidget(Button_CLEAR, 2, 0, 1, 1);
 
         Button_5 = new QPushButton(centralwidget);
         Button_5->setObjectName(QString::fromUtf8("Button_5"));
@@ -296,7 +296,11 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(Display->sizePolicy().hasHeightForWidth());
         Display->setSizePolicy(sizePolicy1);
+        QFont font;
+        font.setPointSize(21);
+        Display->setFont(font);
         Display->setStyleSheet(QString::fromUtf8(""));
+        Display->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(Display, 0, 0, 1, 5);
 
@@ -325,7 +329,7 @@ public:
 
         retranslateUi(Calculator);
 
-        Button_AC->setDefault(false);
+        Button_CLEAR->setDefault(false);
 
 
         QMetaObject::connectSlotsByName(Calculator);
@@ -348,7 +352,7 @@ public:
         Button_Multiply->setText(QCoreApplication::translate("Calculator", "*", nullptr));
         Button_Cos->setText(QCoreApplication::translate("Calculator", "cos", nullptr));
         Button_8->setText(QCoreApplication::translate("Calculator", "8", nullptr));
-        Button_AC->setText(QCoreApplication::translate("Calculator", "AC", nullptr));
+        Button_CLEAR->setText(QCoreApplication::translate("Calculator", "CLEAR", nullptr));
         Button_5->setText(QCoreApplication::translate("Calculator", "5", nullptr));
         Button_MC->setText(QCoreApplication::translate("Calculator", "MC", nullptr));
         Button_1->setText(QCoreApplication::translate("Calculator", "1", nullptr));
@@ -357,6 +361,7 @@ public:
         Button_Sqrt->setText(QCoreApplication::translate("Calculator", "sqrt", nullptr));
         Button_Sin->setText(QCoreApplication::translate("Calculator", "sin", nullptr));
         Button_9->setText(QCoreApplication::translate("Calculator", "9", nullptr));
+        Display->setText(QCoreApplication::translate("Calculator", "0", nullptr));
         Button_4->setText(QCoreApplication::translate("Calculator", "4", nullptr));
         Button_Ans->setText(QCoreApplication::translate("Calculator", "ans", nullptr));
     } // retranslateUi

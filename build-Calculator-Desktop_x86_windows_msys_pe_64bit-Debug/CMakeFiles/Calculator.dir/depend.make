@@ -108,7 +108,6 @@ CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj: C:/Qt/5.1
 CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgets-config.h
 CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsglobal.h
 CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidget.h
-CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
 CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/calculator.h
 CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj: Calculator_autogen/EWIEGA46WW/moc_calculator.cpp
 CMakeFiles/Calculator.dir/Calculator_autogen/mocs_compilation.cpp.obj: Calculator_autogen/mocs_compilation.cpp
@@ -253,6 +252,7 @@ CMakeFiles/Calculator.dir/calculator.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/Qt
 CMakeFiles/Calculator.dir/calculator.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidget.h
 CMakeFiles/Calculator.dir/calculator.cpp.obj: Calculator_autogen/include/ui_calculator.h
 CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
+CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/Expression.h
 CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/calculator.cpp
 CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/calculator.h
 
@@ -370,7 +370,6 @@ CMakeFiles/Calculator.dir/main.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidget
 CMakeFiles/Calculator.dir/main.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgets-config.h
 CMakeFiles/Calculator.dir/main.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsglobal.h
 CMakeFiles/Calculator.dir/main.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidget.h
-CMakeFiles/Calculator.dir/main.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
 CMakeFiles/Calculator.dir/main.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/calculator.h
 CMakeFiles/Calculator.dir/main.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/main.cpp
 
