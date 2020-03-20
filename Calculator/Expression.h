@@ -13,8 +13,6 @@ public :
 
 class TerminalExpression : public Expression{
 
-
-
 protected:
     long double x;
 public :

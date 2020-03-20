@@ -2,6 +2,7 @@
 #include "./ui_calculator.h"
 #include "CalcParser.h"
 #include "Expression.h"
+#include "Exception.h"
 
 Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent)
@@ -90,8 +91,8 @@ void Calculator::EqPressed(){
 
     try{
         curSum = DisplayValue();
-    } catch (const char * er){
-        QString mass = er;
+    } catch (BaseException * er){
+        QString mass = "Error: " + QString::fromStdString(er -> errorMessage());
         ui -> Display -> setText(mass);
         isError = 1;
         return;
@@ -115,8 +116,8 @@ void Calculator::UnaryOpPressed(){
 
     try{
         curSum = DisplayValue();
-    } catch (const char * er){
-        QString mass = er;
+    } catch (BaseException * er){
+        QString mass = "Error: " + QString::fromStdString(er -> errorMessage());
         ui -> Display -> setText(mass);
         isError = 1;
         return;
@@ -225,8 +226,8 @@ void Calculator::MCPressed(){
 
     try{
         curSum = DisplayValue();
-    } catch (const char * er){
-        QString mass = er;
+    } catch (BaseException * er){
+        QString mass = "Error: " + QString::fromStdString(er -> errorMessage());
         ui -> Display -> setText(mass);
         isError = 1;
         return;
@@ -235,8 +236,12 @@ void Calculator::MCPressed(){
 }
 
 long double Calculator::DisplayValue(){
-    CalcParser *content = new CalcParser((ui -> Display -> text()).toStdString());
-
+    CalcParser * content;
+    try{
+        content = new CalcParser((ui -> Display -> text()).toStdString());
+    } catch (BaseException * er){
+        throw er;
+    }
     if (content -> empty()) return 0;
 
     long double curSum = 0;
@@ -245,11 +250,11 @@ long double Calculator::DisplayValue(){
     pair <int, string> now = content -> nextContent();
     if (now.first != 0){
         if (now.second != "-" || content -> empty()){
-            throw "Invalid expression: Tidak dimulai dengan angka";
+            throw new InvalidStartSymbol();
         } else {
             now = content -> nextContent();
             if (now.first != 0){
-                throw "Invalid expression: Tidak dimulai dengan angka";
+                throw new InvalidStartSymbol();
             } else{
                 now.second = "-" + now.second;
             }
@@ -257,7 +262,7 @@ long double Calculator::DisplayValue(){
     }
 
     if (content -> getLen() % 2){
-        throw "Invalid expression: Jumlah operator dan angka tidak seimbang";
+        throw new ImbalanceSymbol();
 
     }
 
@@ -279,7 +284,7 @@ long double Calculator::DisplayValue(){
                     curMulti = mult.solve();
                 } else{
                     if (stod(now.second) == 0){
-                        throw "Error: Division by zero";
+                        throw new DivisionByZero();
                     }
 
 //                    curMulti = curMulti / stod(now.second);
@@ -314,7 +319,7 @@ long double Calculator::DisplayValue(){
                 lastMultiOP = now.second;
             }
         } else{
-            throw "Invalid expression: Consecutive operator";
+            throw new ConsecutiveSymbol();
         }
         id++;
         now = content -> nextContent();
@@ -331,7 +336,7 @@ long double Calculator::DisplayValue(){
                 curMulti = mult.solve();
             } else{
                 if (stod(now.second) == 0){
-                    throw "Error: Division by zero";
+                    throw new DivisionByZero();
                 }
 //                curMulti = curMulti / stod(now.second);
                 TerminalExpression x(curMulti);
@@ -362,7 +367,7 @@ long double Calculator::DisplayValue(){
             lastMultiOP = now.second;
         }
     } else{
-        throw "Invalid expression: Consecutive operator";
+        throw new ConsecutiveSymbol();
     }
     if (lastSumOP == "+" || lastSumOP == ""){
 //        curSum += curMulti;

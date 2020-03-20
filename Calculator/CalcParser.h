@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <bits/stdc++.h>
+#include "Exception.h"
 
 using namespace std;
 
@@ -19,6 +20,11 @@ public:
         while (ss >> temp){
             len++;
             if (('0' <= temp[0] && temp[0] <= '9') || temp[0] == '.'){
+                int cnt = 0;
+                for (char isi : temp){
+                    if (isi == '.') cnt++;
+                }
+                if (cnt >= 2) throw new InvalidNumber();
                 token.push(make_pair(0, temp));
             } else{
                 token.push(make_pair(1, temp));
