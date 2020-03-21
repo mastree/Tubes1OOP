@@ -1,8 +1,8 @@
 #include "calculator.h"
 #include "./ui_calculator.h"
-#include "CalcParser.h"
-#include "Expression.h"
-#include "Exception.h"
+#include "./Parser/CalcParser.h"
+#include "./Expression/Expression.h"
+#include "./Exception/Exception.h"
 
 Calculator::Calculator(QWidget *parent)
     : QMainWindow(parent)
@@ -127,22 +127,18 @@ void Calculator::UnaryOpPressed(){
     if (op == "sqrt"){
         TerminalExpression x(curVal);
         SquareRootExpression sq(&x);
-//        curVal = sqrt(curVal);
         curVal = sq.solve();
     } else if (op == "sin"){
         curVal = curVal * PI / 180;
         TerminalExpression x(curVal);
         SinExpression sin(&x);
         curVal = sin.solve();
-//        curVal = sin(curVal * PI / 180);
     } else if (op == "cos"){
         curVal = curVal * PI / 180;
         TerminalExpression x(curVal);
         CosExpression cos(&x);
         curVal = cos.solve();
-//        curVal = cos(curVal * PI / 180);
     } else if (op == "tan"){
-//        curVal = tan(curVal * PI / 180);
         curVal = curVal * PI / 180;
         TerminalExpression x(curVal);
         TanExpression tan(&x);
@@ -152,7 +148,6 @@ void Calculator::UnaryOpPressed(){
         TerminalExpression x(curVal);
         CotExpression cot(&x);
         curVal = cot.solve();
-//        curVal = 1.0 / tan(curVal * PI / 180);
     }
     lastAns = curVal;
     ui -> Display -> setText(QString::number(curVal, 'g', 16));
@@ -193,11 +188,15 @@ void Calculator::AnsPressed(){
 }
 
 void Calculator::CLEARPressed(){
-    isError = 0;
     curVal = 0;
+    lastAns = 0;
     opPressed = 0;
+    storedAnsExist = 0;
     clearDisplay = 1;
+    isError = 0;
     ui -> Display -> setText("0");
+
+    while (!listOfAns.empty()) listOfAns.pop();
 }
 
 void Calculator::MRPressed(){
@@ -276,18 +275,11 @@ long double Calculator::DisplayValue(){
 
             } else{
                 if (lastMultiOP == "*"){
-
-//                    curMulti *= stod(now.second);
                     TerminalExpression x(curMulti);
                     TerminalExpression y(stod(now.second));
                     MultiplyExpression mult(&x,&y);
                     curMulti = mult.solve();
                 } else{
-                    if (stod(now.second) == 0){
-                        throw new DivisionByZero();
-                    }
-
-//                    curMulti = curMulti / stod(now.second);
                     TerminalExpression x(curMulti);
                     TerminalExpression y(stod(now.second));
                     DivideExpression div(&x,&y);
@@ -298,7 +290,6 @@ long double Calculator::DisplayValue(){
         } else if (now.first == 1 && (id & 1)){
             if (now.second == "+" || now.second == "-"){
                 if (lastSumOP == "+" || lastSumOP == ""){
-//                    curSum += curMulti;
                     TerminalExpression x(curSum);
                     TerminalExpression y(curMulti);
                     AddExpression add(&x,&y);
@@ -306,12 +297,10 @@ long double Calculator::DisplayValue(){
 
 
                 } else{
-//                    curSum -= curMulti;
                     TerminalExpression x(curSum);
                     TerminalExpression y(curMulti);
                     SubtractExpression sub(&x,&y);
                     curSum = sub.solve();
-
                 }
                 lastMultiOP = "";
                 lastSumOP = now.second;
@@ -329,16 +318,11 @@ long double Calculator::DisplayValue(){
             curMulti = stod(now.second);
         } else{
             if (lastMultiOP == "*"){
-//                curMulti *= stod(now.second);
                 TerminalExpression x(curMulti);
                 TerminalExpression y(stod(now.second));
                 MultiplyExpression mult(&x,&y);
                 curMulti = mult.solve();
             } else{
-                if (stod(now.second) == 0){
-                    throw new DivisionByZero();
-                }
-//                curMulti = curMulti / stod(now.second);
                 TerminalExpression x(curMulti);
                 TerminalExpression y(stod(now.second));
                 DivideExpression div(&x,&y);
@@ -349,13 +333,11 @@ long double Calculator::DisplayValue(){
     } else if (now.first == 1 && (id & 1)){
         if (now.second == "+" || now.second == "-"){
             if (lastSumOP == "+" || lastSumOP == ""){
-//                curSum += curMulti;
                 TerminalExpression x(curSum);
                 TerminalExpression y(curMulti);
                 AddExpression add(&x,&y);
                 curSum = add.solve();
             } else{
-//                curSum -= curMulti;
                 TerminalExpression x(curSum);
                 TerminalExpression y(curMulti);
                 SubtractExpression sub(&x,&y);
@@ -370,13 +352,11 @@ long double Calculator::DisplayValue(){
         throw new ConsecutiveSymbol();
     }
     if (lastSumOP == "+" || lastSumOP == ""){
-//        curSum += curMulti;
         TerminalExpression x(curSum);
         TerminalExpression y(curMulti);
         AddExpression add(&x,&y);
         curSum = add.solve();
     } else{
-//        curSum -= curMulti;
         TerminalExpression x(curSum);
         TerminalExpression y(curMulti);
         SubtractExpression sub(&x,&y);

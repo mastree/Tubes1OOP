@@ -3,13 +3,15 @@
 
 #include <QMainWindow>
 #include <bits/stdc++.h>
-// #include "Button.h"
 
 using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
     class Calculator;
+    class CalcParser;
+    class Expression;
+    class Exception;
 }
 QT_END_NAMESPACE
 
@@ -18,12 +20,12 @@ class Calculator : public QMainWindow
     Q_OBJECT
 
 public:
-    const long double PI;
 
     Calculator(QWidget *parent = nullptr); // nullptr = 0
     ~Calculator();
 
 protected:
+    const long double PI;
     long double curVal; 
     long double lastAns;
     bool opPressed;
@@ -47,6 +49,5 @@ private slots:
     void CLEARPressed();
     void MRPressed();
     void MCPressed();
-
 };
 #endif // CALCULATOR_H

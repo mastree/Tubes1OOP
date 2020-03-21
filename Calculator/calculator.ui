@@ -36,6 +36,10 @@ QPushButton{
 	height: 120px;
 }
 
+#Button_CLEAR{
+	background-color: rgb(37, 217, 142);
+}
+
 QPushButton:hover{
 	background-color: rgb(100, 100, 100);
 	border: 1px white;
@@ -44,8 +48,13 @@ QPushButton:hover{
 
 QPushButton:pressed{
 	background-color: rgb(255, 0, 0);
-	border: 1px solid dark gray;
+	border: 1px solid gray;
 	color: rgb(0, 0, 0);
+	height: 55px;
+}
+
+#Button_Equal:pressed{
+	height: 120px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -57,6 +66,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -77,6 +92,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -96,6 +117,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -109,6 +136,12 @@ QPushButton:pressed{
     </item>
     <item row="6" column="2">
      <widget class="QPushButton" name="Button_Tan">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>tan</string>
       </property>
@@ -121,6 +154,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -141,6 +180,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -159,6 +204,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -179,6 +230,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -198,6 +255,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -211,6 +274,12 @@ QPushButton:pressed{
     </item>
     <item row="6" column="3">
      <widget class="QPushButton" name="Button_Cot">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>cot</string>
       </property>
@@ -223,6 +292,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -243,6 +318,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -256,6 +337,12 @@ QPushButton:pressed{
     </item>
     <item row="6" column="1">
      <widget class="QPushButton" name="Button_Cos">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>cos</string>
       </property>
@@ -268,6 +355,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -287,6 +380,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="acceptDrops">
        <bool>false</bool>
@@ -316,6 +415,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -334,6 +439,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -354,6 +465,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -372,6 +489,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -392,6 +515,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -405,6 +534,12 @@ QPushButton:pressed{
     </item>
     <item row="4" column="4">
      <widget class="QPushButton" name="Button_Sqrt">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>sqrt</string>
       </property>
@@ -412,6 +547,12 @@ QPushButton:pressed{
     </item>
     <item row="6" column="0">
      <widget class="QPushButton" name="Button_Sin">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>sin</string>
       </property>
@@ -424,6 +565,12 @@ QPushButton:pressed{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -446,7 +593,7 @@ QPushButton:pressed{
       </property>
       <property name="font">
        <font>
-        <pointsize>21</pointsize>
+        <pointsize>19</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -468,6 +615,12 @@ QPushButton:pressed{
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -481,6 +634,12 @@ QPushButton:pressed{
     </item>
     <item row="1" column="4">
      <widget class="QPushButton" name="Button_Ans">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>ans</string>
       </property>
