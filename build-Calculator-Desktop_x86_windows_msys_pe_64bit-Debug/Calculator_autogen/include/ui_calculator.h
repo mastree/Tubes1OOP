@@ -82,6 +82,10 @@ public:
 "	height: 120px;\n"
 "}\n"
 "\n"
+"#Button_CLEAR{\n"
+"	background-color: rgb(37, 217, 142);\n"
+"}\n"
+"\n"
 "QPushButton:hover{\n"
 "	background-color: rgb(100, 100, 100);\n"
 "	border: 1px white;\n"
@@ -90,8 +94,13 @@ public:
 "\n"
 "QPushButton:pressed{\n"
 "	background-color: rgb(255, 0, 0);\n"
-"	border: 1px solid dark gray;\n"
+"	border: 1px solid gray;\n"
 "	color: rgb(0, 0, 0);\n"
+"	height: 55px;\n"
+"}\n"
+"\n"
+"#Button_Equal:pressed{\n"
+"	height: 120px;\n"
 "}"));
         centralwidget = new QWidget(Calculator);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -104,6 +113,10 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Button_Divide->sizePolicy().hasHeightForWidth());
         Button_Divide->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setBold(true);
+        font.setWeight(75);
+        Button_Divide->setFont(font);
         Button_Divide->setAutoFillBackground(false);
         Button_Divide->setStyleSheet(QString::fromUtf8(""));
 
@@ -113,6 +126,7 @@ public:
         Button_2->setObjectName(QString::fromUtf8("Button_2"));
         sizePolicy.setHeightForWidth(Button_2->sizePolicy().hasHeightForWidth());
         Button_2->setSizePolicy(sizePolicy);
+        Button_2->setFont(font);
         Button_2->setAutoFillBackground(false);
         Button_2->setStyleSheet(QString::fromUtf8(""));
 
@@ -122,6 +136,7 @@ public:
         Button_Subtract->setObjectName(QString::fromUtf8("Button_Subtract"));
         sizePolicy.setHeightForWidth(Button_Subtract->sizePolicy().hasHeightForWidth());
         Button_Subtract->setSizePolicy(sizePolicy);
+        Button_Subtract->setFont(font);
         Button_Subtract->setAutoFillBackground(false);
         Button_Subtract->setStyleSheet(QString::fromUtf8(""));
 
@@ -129,6 +144,7 @@ public:
 
         Button_Tan = new QPushButton(centralwidget);
         Button_Tan->setObjectName(QString::fromUtf8("Button_Tan"));
+        Button_Tan->setFont(font);
 
         gridLayout->addWidget(Button_Tan, 6, 2, 1, 1);
 
@@ -136,6 +152,7 @@ public:
         Button_Equal->setObjectName(QString::fromUtf8("Button_Equal"));
         sizePolicy.setHeightForWidth(Button_Equal->sizePolicy().hasHeightForWidth());
         Button_Equal->setSizePolicy(sizePolicy);
+        Button_Equal->setFont(font);
         Button_Equal->setAutoFillBackground(false);
         Button_Equal->setStyleSheet(QString::fromUtf8(""));
 
@@ -145,6 +162,7 @@ public:
         Button_3->setObjectName(QString::fromUtf8("Button_3"));
         sizePolicy.setHeightForWidth(Button_3->sizePolicy().hasHeightForWidth());
         Button_3->setSizePolicy(sizePolicy);
+        Button_3->setFont(font);
         Button_3->setAutoFillBackground(false);
         Button_3->setStyleSheet(QString::fromUtf8(""));
 
@@ -154,6 +172,7 @@ public:
         Button_Point->setObjectName(QString::fromUtf8("Button_Point"));
         sizePolicy.setHeightForWidth(Button_Point->sizePolicy().hasHeightForWidth());
         Button_Point->setSizePolicy(sizePolicy);
+        Button_Point->setFont(font);
         Button_Point->setAutoFillBackground(false);
         Button_Point->setStyleSheet(QString::fromUtf8(""));
 
@@ -163,6 +182,7 @@ public:
         Button_6->setObjectName(QString::fromUtf8("Button_6"));
         sizePolicy.setHeightForWidth(Button_6->sizePolicy().hasHeightForWidth());
         Button_6->setSizePolicy(sizePolicy);
+        Button_6->setFont(font);
         Button_6->setAutoFillBackground(false);
         Button_6->setStyleSheet(QString::fromUtf8(""));
 
@@ -172,6 +192,7 @@ public:
         Button_7->setObjectName(QString::fromUtf8("Button_7"));
         sizePolicy.setHeightForWidth(Button_7->sizePolicy().hasHeightForWidth());
         Button_7->setSizePolicy(sizePolicy);
+        Button_7->setFont(font);
         Button_7->setAutoFillBackground(false);
         Button_7->setStyleSheet(QString::fromUtf8(""));
 
@@ -179,6 +200,7 @@ public:
 
         Button_Cot = new QPushButton(centralwidget);
         Button_Cot->setObjectName(QString::fromUtf8("Button_Cot"));
+        Button_Cot->setFont(font);
 
         gridLayout->addWidget(Button_Cot, 6, 3, 1, 1);
 
@@ -186,6 +208,7 @@ public:
         Button_MR->setObjectName(QString::fromUtf8("Button_MR"));
         sizePolicy.setHeightForWidth(Button_MR->sizePolicy().hasHeightForWidth());
         Button_MR->setSizePolicy(sizePolicy);
+        Button_MR->setFont(font);
         Button_MR->setAutoFillBackground(false);
         Button_MR->setStyleSheet(QString::fromUtf8(""));
 
@@ -195,6 +218,7 @@ public:
         Button_Multiply->setObjectName(QString::fromUtf8("Button_Multiply"));
         sizePolicy.setHeightForWidth(Button_Multiply->sizePolicy().hasHeightForWidth());
         Button_Multiply->setSizePolicy(sizePolicy);
+        Button_Multiply->setFont(font);
         Button_Multiply->setAutoFillBackground(false);
         Button_Multiply->setStyleSheet(QString::fromUtf8(""));
 
@@ -202,6 +226,7 @@ public:
 
         Button_Cos = new QPushButton(centralwidget);
         Button_Cos->setObjectName(QString::fromUtf8("Button_Cos"));
+        Button_Cos->setFont(font);
 
         gridLayout->addWidget(Button_Cos, 6, 1, 1, 1);
 
@@ -209,6 +234,7 @@ public:
         Button_8->setObjectName(QString::fromUtf8("Button_8"));
         sizePolicy.setHeightForWidth(Button_8->sizePolicy().hasHeightForWidth());
         Button_8->setSizePolicy(sizePolicy);
+        Button_8->setFont(font);
         Button_8->setAutoFillBackground(false);
         Button_8->setStyleSheet(QString::fromUtf8(""));
 
@@ -218,6 +244,7 @@ public:
         Button_CLEAR->setObjectName(QString::fromUtf8("Button_CLEAR"));
         sizePolicy.setHeightForWidth(Button_CLEAR->sizePolicy().hasHeightForWidth());
         Button_CLEAR->setSizePolicy(sizePolicy);
+        Button_CLEAR->setFont(font);
         Button_CLEAR->setAcceptDrops(false);
         Button_CLEAR->setAutoFillBackground(false);
         Button_CLEAR->setStyleSheet(QString::fromUtf8(""));
@@ -229,6 +256,7 @@ public:
         Button_5->setObjectName(QString::fromUtf8("Button_5"));
         sizePolicy.setHeightForWidth(Button_5->sizePolicy().hasHeightForWidth());
         Button_5->setSizePolicy(sizePolicy);
+        Button_5->setFont(font);
         Button_5->setAutoFillBackground(false);
         Button_5->setStyleSheet(QString::fromUtf8(""));
 
@@ -238,6 +266,7 @@ public:
         Button_MC->setObjectName(QString::fromUtf8("Button_MC"));
         sizePolicy.setHeightForWidth(Button_MC->sizePolicy().hasHeightForWidth());
         Button_MC->setSizePolicy(sizePolicy);
+        Button_MC->setFont(font);
         Button_MC->setAutoFillBackground(false);
         Button_MC->setStyleSheet(QString::fromUtf8(""));
 
@@ -247,6 +276,7 @@ public:
         Button_1->setObjectName(QString::fromUtf8("Button_1"));
         sizePolicy.setHeightForWidth(Button_1->sizePolicy().hasHeightForWidth());
         Button_1->setSizePolicy(sizePolicy);
+        Button_1->setFont(font);
         Button_1->setAutoFillBackground(false);
         Button_1->setStyleSheet(QString::fromUtf8(""));
 
@@ -256,6 +286,7 @@ public:
         Button_0->setObjectName(QString::fromUtf8("Button_0"));
         sizePolicy.setHeightForWidth(Button_0->sizePolicy().hasHeightForWidth());
         Button_0->setSizePolicy(sizePolicy);
+        Button_0->setFont(font);
         Button_0->setAutoFillBackground(false);
         Button_0->setStyleSheet(QString::fromUtf8(""));
 
@@ -265,6 +296,7 @@ public:
         Button_Add->setObjectName(QString::fromUtf8("Button_Add"));
         sizePolicy.setHeightForWidth(Button_Add->sizePolicy().hasHeightForWidth());
         Button_Add->setSizePolicy(sizePolicy);
+        Button_Add->setFont(font);
         Button_Add->setAutoFillBackground(false);
         Button_Add->setStyleSheet(QString::fromUtf8(""));
 
@@ -272,11 +304,13 @@ public:
 
         Button_Sqrt = new QPushButton(centralwidget);
         Button_Sqrt->setObjectName(QString::fromUtf8("Button_Sqrt"));
+        Button_Sqrt->setFont(font);
 
         gridLayout->addWidget(Button_Sqrt, 4, 4, 1, 1);
 
         Button_Sin = new QPushButton(centralwidget);
         Button_Sin->setObjectName(QString::fromUtf8("Button_Sin"));
+        Button_Sin->setFont(font);
 
         gridLayout->addWidget(Button_Sin, 6, 0, 1, 1);
 
@@ -284,6 +318,7 @@ public:
         Button_9->setObjectName(QString::fromUtf8("Button_9"));
         sizePolicy.setHeightForWidth(Button_9->sizePolicy().hasHeightForWidth());
         Button_9->setSizePolicy(sizePolicy);
+        Button_9->setFont(font);
         Button_9->setAutoFillBackground(false);
         Button_9->setStyleSheet(QString::fromUtf8(""));
 
@@ -296,9 +331,9 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(Display->sizePolicy().hasHeightForWidth());
         Display->setSizePolicy(sizePolicy1);
-        QFont font;
-        font.setPointSize(21);
-        Display->setFont(font);
+        QFont font1;
+        font1.setPointSize(19);
+        Display->setFont(font1);
         Display->setStyleSheet(QString::fromUtf8(""));
         Display->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
@@ -308,6 +343,7 @@ public:
         Button_4->setObjectName(QString::fromUtf8("Button_4"));
         sizePolicy.setHeightForWidth(Button_4->sizePolicy().hasHeightForWidth());
         Button_4->setSizePolicy(sizePolicy);
+        Button_4->setFont(font);
         Button_4->setAutoFillBackground(false);
         Button_4->setStyleSheet(QString::fromUtf8(""));
 
@@ -315,6 +351,7 @@ public:
 
         Button_Ans = new QPushButton(centralwidget);
         Button_Ans->setObjectName(QString::fromUtf8("Button_Ans"));
+        Button_Ans->setFont(font);
 
         gridLayout->addWidget(Button_Ans, 1, 4, 1, 1);
 

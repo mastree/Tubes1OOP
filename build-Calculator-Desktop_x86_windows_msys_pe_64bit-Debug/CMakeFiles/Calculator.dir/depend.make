@@ -251,8 +251,9 @@ CMakeFiles/Calculator.dir/calculator.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/Qt
 CMakeFiles/Calculator.dir/calculator.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qtwidgetsglobal.h
 CMakeFiles/Calculator.dir/calculator.cpp.obj: C:/Qt/5.14.1/mingw73_64/include/QtWidgets/qwidget.h
 CMakeFiles/Calculator.dir/calculator.cpp.obj: Calculator_autogen/include/ui_calculator.h
-CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
-CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/Expression.h
+CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/Exception/Exception.h
+CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/Expression/Expression.h
+CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/Parser/CalcParser.h
 CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/calculator.cpp
 CMakeFiles/Calculator.dir/calculator.cpp.obj: D:/_OOP/Tubes1OOP/Calculator/calculator.h
 

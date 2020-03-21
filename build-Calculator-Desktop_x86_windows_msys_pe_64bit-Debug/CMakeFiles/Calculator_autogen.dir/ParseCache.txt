@@ -4,3 +4,5 @@ D:/_OOP/Tubes1OOP/Calculator/calculator.h
  mmc:Q_OBJECT
 D:/_OOP/Tubes1OOP/Calculator/calculator.cpp
  uic:./ui_calculator.h
+D:/_OOP/Tubes1OOP/Calculator/Calculator/calculator.h
+ mmc:Q_OBJECT

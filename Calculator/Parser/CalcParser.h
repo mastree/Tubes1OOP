@@ -7,20 +7,16 @@
 
 using namespace std;
 
-class CalcParser
-{
+class CalcParser {
+// Class untuk parsing string yang ada di layar kalkulator
 private:
-    int len = 0;
-    queue <pair<int, string>> token; // Jenis, value;
-    // num = 0, op = 1;
+    int len = 0; // Banyak token
+    queue <pair<int, string>> token; // Pair menandakan Jenis, value. Jenis = 0 menandakan bilangan, Jenis = 1 menandakan operator
 public:
-    CalcParser(string s);
-
-    pair<int, string> nextContent();
-
-    bool empty();
-
-    int getLen();
+    CalcParser(string s); // Constructor yang akan mem-parsing string s
+    pair<int, string> nextContent(); // Mengembalikan isi token satu per satu
+    bool empty(); // Mengembalikan status kekosongan token
+    int getLen(); // Mengembalikan banyak isi token
 };
 
 

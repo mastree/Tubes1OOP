@@ -1392,25 +1392,35 @@ QtWidgets/QStatusBar
 QtWidgets/QWidget
 -
 
-D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
+D:/_OOP/Tubes1OOP/Calculator/Exception/Exception.h
+iostream
+-
+
+D:/_OOP/Tubes1OOP/Calculator/Expression/Expression.h
+bits/stdc++.h
+-
+../Exception/Exception.h
+D:/_OOP/Tubes1OOP/Calculator/Exception/Exception.h
+
+D:/_OOP/Tubes1OOP/Calculator/Parser/CalcParser.h
 QMainWindow
 -
 bits/stdc++.h
 -
-
-D:/_OOP/Tubes1OOP/Calculator/Expression.h
-bits/stdc++.h
--
+../Exception/Exception.h
+D:/_OOP/Tubes1OOP/Calculator/Exception/Exception.h
 
 D:/_OOP/Tubes1OOP/Calculator/calculator.cpp
 calculator.h
 D:/_OOP/Tubes1OOP/Calculator/calculator.h
 ./ui_calculator.h
 D:/_OOP/Tubes1OOP/Calculator/ui_calculator.h
-CalcParser.h
-D:/_OOP/Tubes1OOP/Calculator/CalcParser.h
-Expression.h
-D:/_OOP/Tubes1OOP/Calculator/Expression.h
+./Parser/CalcParser.h
+D:/_OOP/Tubes1OOP/Calculator/Parser/CalcParser.h
+./Expression/Expression.h
+D:/_OOP/Tubes1OOP/Calculator/Expression/Expression.h
+./Exception/Exception.h
+D:/_OOP/Tubes1OOP/Calculator/Exception/Exception.h
 
 D:/_OOP/Tubes1OOP/Calculator/calculator.h
 QMainWindow
