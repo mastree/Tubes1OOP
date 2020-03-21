@@ -58,4 +58,4 @@ https://www.qt.io/download
 4. Run program
 
 # *Screenshot Aplikasi*
-![picture alt](./app_screenshot/calculator.png "Title is optional")
+![picture alt](./app_screenshot/calculator.png "Calculator OOP")
