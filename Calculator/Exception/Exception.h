@@ -4,6 +4,16 @@
 #include <iostream>
 using namespace std;
 
+namespace Exception {
+    class BaseException;
+    class InvalidStartSymbol;
+    class ImbalanceSymbol;
+    class ConsecutiveSymbol;
+    class InvalidNumber;
+    class DivisionByZero;
+    class ImaginaryNumber;
+}
+
 class BaseException {
 // Base class untuk exception
 public:

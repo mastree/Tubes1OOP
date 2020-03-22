@@ -114,13 +114,13 @@ public:
     T solve();
 };
 
-template<class T>
-class PowerExpression : public BinaryExpression<T>{
+// template<class T>
+// class PowerExpression : public BinaryExpression<T>{
 
-public:
-    PowerExpression(Expression<T> *x, Expression<T> *y);
-    T solve();
-};
+// public:
+//     PowerExpression(Expression<T> *x, Expression<T> *y);
+//     T solve();
+// };
 
 
 
@@ -245,15 +245,15 @@ T DivideExpression<T>::solve(){
     return(result);
 }
 
-template<class T>
-PowerExpression<T>::PowerExpression(Expression<T> *x, Expression<T> *y) : BinaryExpression<T>(x, y){}
-template<class T>
-T PowerExpression<T>::solve(){
-    T solutionX = this->x->solve();
-    T solutionY = this->y->solve();
-    T result = pow(solutionX,solutionY);
-    return(result);
-}
+// template<class T>
+// PowerExpression<T>::PowerExpression(Expression<T> *x, Expression<T> *y) : BinaryExpression<T>(x, y){}
+// template<class T>
+// T PowerExpression<T>::solve(){
+//     T solutionX = this->x->solve();
+//     T solutionY = this->y->solve();
+//     T result = pow(solutionX,solutionY);
+//     return(result);
+// }
 
 
 #endif // EXPRESSION_H
