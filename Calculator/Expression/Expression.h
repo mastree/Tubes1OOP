@@ -5,214 +5,253 @@
 #include "../Exception/Exception.h"
 
 using namespace std;
+
+template<class T>
 class Expression {
 
 public :
-    virtual long double solve() = 0;
+    virtual T solve() = 0;
 };
 
-class TerminalExpression : public Expression{
+template <class T>
+class TerminalExpression : public Expression<T>{
 
 protected:
-    long double x;
+    T x;
 public :
-    TerminalExpression(long double x);
-    long double solve();
+    TerminalExpression(T x);
+    T solve();
 
 };
 
-class UnaryExpression : public Expression{
+template <class T>
+class UnaryExpression : public Expression<T>{
 
 protected:
-    Expression* x;
+    Expression<T>* x;
 public:
-    UnaryExpression(Expression* x);
-    virtual long double solve() = 0;
+    UnaryExpression(Expression<T>* x);
+    virtual T solve() = 0;
 };
 
-class BinaryExpression : public Expression{
+
+template <class T>
+class BinaryExpression : public Expression<T>{
 
 
 protected:
-    Expression* x;
-    Expression* y;
+    Expression<T>* x;
+    Expression<T>* y;
 
 public:
-    BinaryExpression(Expression* x, Expression* y);
-    virtual long double solve() = 0;
+    BinaryExpression(Expression<T>* x, Expression<T>* y);
+    virtual T solve() = 0;
 };
 
-class SquareRootExpression : public UnaryExpression {
+template<class T>
+class SquareRootExpression : public UnaryExpression<T> {
 public:
-    SquareRootExpression(Expression *x);
-    long double solve();
+    SquareRootExpression(Expression<T> *x);
+    T solve();
 };
 
-class SinExpression : public UnaryExpression {
+template<class T>
+class SinExpression : public UnaryExpression<T> {
 public:
-    SinExpression(Expression *x);
-    long double solve();
+    SinExpression(Expression<T> *x);
+    T solve();
 };
 
-
-class CosExpression : public UnaryExpression {
+template<class T>
+class CosExpression : public UnaryExpression<T> {
 public:
-    CosExpression(Expression *x);
-    long double solve();
+    CosExpression(Expression<T> *x);
+    T solve();
 };
 
-class TanExpression : public UnaryExpression {
+template<class T>
+class TanExpression : public UnaryExpression<T> {
 public:
-    TanExpression(Expression *x);
-    long double solve();
+    TanExpression(Expression<T> *x);
+    T solve();
 };
 
-class CotExpression : public UnaryExpression {
+template<class T>
+class CotExpression : public UnaryExpression<T> {
 public:
-    CotExpression(Expression *x);
-    long double solve();
+    CotExpression(Expression<T> *x);
+    T solve();
 };
 
-
-class AddExpression : public BinaryExpression {
-
-public:
-    AddExpression(Expression *x, Expression *y);
-    long double solve();
-};
-
-class SubtractExpression : public BinaryExpression{
+template<class T>
+class AddExpression : public BinaryExpression<T> {
 
 public:
-    SubtractExpression(Expression *x,Expression *y);
-    long double solve();
+    AddExpression(Expression<T> *x, Expression<T> *y);
+    T solve();
 };
 
-class MultiplyExpression : public BinaryExpression{
-public:
-    MultiplyExpression(Expression *x, Expression *y);
-    long double solve();
-};
-
-class DivideExpression : public BinaryExpression{
+template<class T>
+class SubtractExpression : public BinaryExpression<T>{
 
 public:
-    DivideExpression(Expression *x, Expression *y);
-    long double solve();
+    SubtractExpression(Expression<T> *x,Expression<T> *y);
+    T solve();
 };
 
-class PowerExpression : public BinaryExpression{
+template<class T>
+class MultiplyExpression : public BinaryExpression<T>{
+public:
+    MultiplyExpression(Expression<T> *x, Expression<T> *y);
+    T solve();
+};
+
+template<class T>
+class DivideExpression : public BinaryExpression<T>{
 
 public:
-    PowerExpression(Expression *x, Expression *y);
-    long double solve();
+    DivideExpression(Expression<T> *x, Expression<T> *y);
+    T solve();
 };
+
+template<class T>
+class PowerExpression : public BinaryExpression<T>{
+
+public:
+    PowerExpression(Expression<T> *x, Expression<T> *y);
+    T solve();
+};
+
 
 
 //====================================================
 // *** REALISASI ***
 //====================================================
-
-TerminalExpression::TerminalExpression(long double x){
+template<class T>
+TerminalExpression<T>::TerminalExpression(T x){
     this->x = x;
 }
 
-long double TerminalExpression::solve(){
+template<class T>
+T TerminalExpression<T>::solve(){
     return this->x;
 }
 
-UnaryExpression::UnaryExpression(Expression *x){
+template<class T>
+UnaryExpression<T>::UnaryExpression(Expression<T> *x){
     this->x = x;
 }
 
-BinaryExpression::BinaryExpression(Expression *x, Expression *y){
+template<class T>
+BinaryExpression<T>::BinaryExpression(Expression<T> *x, Expression<T> *y){
     this->x = x;
     this->y = y;
 }
 
-SquareRootExpression::SquareRootExpression(Expression *x) : UnaryExpression(x){}
+template<class T>
+SquareRootExpression<T>::SquareRootExpression(Expression<T> *x) : UnaryExpression<T>(x){}
 
-
-long double SquareRootExpression::solve() {
-    long double answ = this->x->solve();
+template<class T>
+T SquareRootExpression<T>::solve() {
+    T answ = this->x->solve();
     if (answ < 0){
         throw new ImaginaryNumber();
     }
     return sqrt(answ);
 }
 
-SinExpression::SinExpression(Expression *x): UnaryExpression(x) {}
+template<class T>
+SinExpression<T>::SinExpression(Expression<T> *x): UnaryExpression<T>(x) {}
 
-long double SinExpression::solve(){
-    long double answ = this->x->solve();
+template<class T>
+T SinExpression<T>::solve(){
+    T answ = this->x->solve();
     return sin(answ);
 }
 
-CosExpression::CosExpression(Expression *x):UnaryExpression(x){}
+template<class T>
+CosExpression<T>::CosExpression(Expression<T> *x):UnaryExpression<T>(x){}
 
-long double CosExpression::solve(){
-    long double answ = this->x->solve();
+template<class T>
+T CosExpression<T>::solve(){
+    T answ = this->x->solve();
     return cos(answ);
 }
 
-TanExpression::TanExpression(Expression *x):UnaryExpression(x){}
+template<class T>
+TanExpression<T>::TanExpression(Expression<T> *x):UnaryExpression<T>(x){}
 
-long double TanExpression::solve(){
-    long double answ = this->x->solve();
+
+template<class T>
+T TanExpression<T>::solve(){
+    T answ = this->x->solve();
     return tan(answ);
 }
 
-CotExpression::CotExpression(Expression *x):UnaryExpression(x){}
+template<class T>
+CotExpression<T>::CotExpression(Expression<T> *x):UnaryExpression<T>(x){}
 
-long double CotExpression::solve(){
-    long double answ = this->x->solve();
+template<class T>
+T CotExpression<T>::solve(){
+    T answ = this->x->solve();
     return 1/tan(answ);
 }
 
-AddExpression::AddExpression(Expression *x,Expression *y ) :BinaryExpression(x,y){
+template<class T>
+AddExpression<T>::AddExpression(Expression<T> *x,Expression<T> *y ) :BinaryExpression<T>(x,y){
 
 }
-long double AddExpression::solve(){
-    long double solutionX = this->x->solve();
-    long double solutionY = this->y->solve();
-    long double result = solutionX + solutionY;
+template<class T>
+T AddExpression<T>::solve(){
+    T solutionX = this->x->solve();
+    T solutionY = this->y->solve();
+    T result = solutionX + solutionY;
     return(result);
 }
 
-SubtractExpression::SubtractExpression(Expression *x, Expression *y): BinaryExpression(x, y){}
+template<class T>
+SubtractExpression<T>::SubtractExpression(Expression<T> *x, Expression<T> *y): BinaryExpression<T>(x, y){}
 
-long double SubtractExpression::solve(){
-    long double solutionX = this->x->solve();
-    long double solutionY = this->y->solve();
-    long double result = solutionX - solutionY;
+template<class T>
+T SubtractExpression<T>::solve(){
+    T solutionX = this->x->solve();
+    T solutionY = this->y->solve();
+    T result = solutionX - solutionY;
     return(result);
 }
 
-MultiplyExpression::MultiplyExpression(Expression *x, Expression *y) : BinaryExpression(x,y){}
+template<class T>
+MultiplyExpression<T>::MultiplyExpression(Expression<T> *x, Expression<T> *y) : BinaryExpression<T>(x,y){}
 
-long double MultiplyExpression::solve(){
-    long double solutionX = this->x->solve();
-    long double solutionY = this->y->solve();
-    long double result = solutionX * solutionY;
+template<class T>
+T MultiplyExpression<T>::solve(){
+    T solutionX = this->x->solve();
+    T solutionY = this->y->solve();
+    T result = solutionX * solutionY;
     return(result);
 }
 
-DivideExpression::DivideExpression(Expression *x, Expression *y) : BinaryExpression(x,y){}
-long double DivideExpression::solve(){
-    long double solutionX = this->x->solve();
-    long double solutionY = this->y->solve();
+template<class T>
+DivideExpression<T>::DivideExpression(Expression<T> *x, Expression<T> *y) : BinaryExpression<T>(x,y){}
+
+template<class T>
+T DivideExpression<T>::solve(){
+    T solutionX = this->x->solve();
+    T solutionY = this->y->solve();
     if (solutionY == 0){
         throw new DivisionByZero();
     }
-    long double result = solutionX / solutionY;
+    T result = solutionX / solutionY;
     return(result);
 }
 
-PowerExpression::PowerExpression(Expression *x, Expression *y) : BinaryExpression(x, y){}
-long double PowerExpression::solve(){
-    long double solutionX = this->x->solve();
-    long double solutionY = this->y->solve();
-    long double result = pow(solutionX,solutionY);
+template<class T>
+PowerExpression<T>::PowerExpression(Expression<T> *x, Expression<T> *y) : BinaryExpression<T>(x, y){}
+template<class T>
+T PowerExpression<T>::solve(){
+    T solutionX = this->x->solve();
+    T solutionY = this->y->solve();
+    T result = pow(solutionX,solutionY);
     return(result);
 }
 

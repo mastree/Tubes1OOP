@@ -105,7 +105,6 @@ void Calculator::EqPressed(){
     opPressed = 0;
     storedAnsExist = 1;
 }
-
 void Calculator::UnaryOpPressed(){
     if (isError){
         return;
@@ -125,28 +124,28 @@ void Calculator::UnaryOpPressed(){
 
     curVal = curSum;
     if (op == "sqrt"){
-        TerminalExpression x(curVal);
-        SquareRootExpression sq(&x);
+        TerminalExpression<long double> x(curVal);
+        SquareRootExpression<long double> sq(&x);
         curVal = sq.solve();
     } else if (op == "sin"){
         curVal = curVal * PI / 180;
-        TerminalExpression x(curVal);
-        SinExpression sin(&x);
+        TerminalExpression<long double> x(curVal);
+        SinExpression<long double> sin(&x);
         curVal = sin.solve();
     } else if (op == "cos"){
         curVal = curVal * PI / 180;
-        TerminalExpression x(curVal);
-        CosExpression cos(&x);
+        TerminalExpression<long double> x(curVal);
+        CosExpression<long double> cos(&x);
         curVal = cos.solve();
     } else if (op == "tan"){
         curVal = curVal * PI / 180;
-        TerminalExpression x(curVal);
-        TanExpression tan(&x);
+        TerminalExpression<long double> x(curVal);
+        TanExpression<long double> tan(&x);
         curVal = tan.solve();
     } else{
         curVal = curVal * PI / 180;
-        TerminalExpression x(curVal);
-        CotExpression cot(&x);
+        TerminalExpression<long double> x(curVal);
+        CotExpression<long double> cot(&x);
         curVal = cot.solve();
     }
     lastAns = curVal;
@@ -155,6 +154,7 @@ void Calculator::UnaryOpPressed(){
     opPressed = 0;
     storedAnsExist = 1;
 }
+
 
 void Calculator::PointPressed(){
     if (isError){
@@ -275,14 +275,14 @@ long double Calculator::DisplayValue(){
 
             } else{
                 if (lastMultiOP == "*"){
-                    TerminalExpression x(curMulti);
-                    TerminalExpression y(stod(now.second));
-                    MultiplyExpression mult(&x,&y);
+                    TerminalExpression<long double> x(curMulti);
+                    TerminalExpression<long double> y(stod(now.second));
+                    MultiplyExpression<long double> mult(&x,&y);
                     curMulti = mult.solve();
                 } else{
-                    TerminalExpression x(curMulti);
-                    TerminalExpression y(stod(now.second));
-                    DivideExpression div(&x,&y);
+                    TerminalExpression<long double> x(curMulti);
+                    TerminalExpression<long double> y(stod(now.second));
+                    DivideExpression<long double> div(&x,&y);
                     curMulti = div.solve();
                 }
                 lastMultiOP = "";
@@ -290,16 +290,16 @@ long double Calculator::DisplayValue(){
         } else if (now.first == 1 && (id & 1)){
             if (now.second == "+" || now.second == "-"){
                 if (lastSumOP == "+" || lastSumOP == ""){
-                    TerminalExpression x(curSum);
-                    TerminalExpression y(curMulti);
-                    AddExpression add(&x,&y);
+                    TerminalExpression<long double> x(curSum);
+                    TerminalExpression<long double> y(curMulti);
+                    AddExpression<long double> add(&x,&y);
                     curSum = add.solve();
 
 
                 } else{
-                    TerminalExpression x(curSum);
-                    TerminalExpression y(curMulti);
-                    SubtractExpression sub(&x,&y);
+                    TerminalExpression<long double> x(curSum);
+                    TerminalExpression<long double> y(curMulti);
+                    SubtractExpression<long double> sub(&x,&y);
                     curSum = sub.solve();
                 }
                 lastMultiOP = "";
@@ -318,14 +318,14 @@ long double Calculator::DisplayValue(){
             curMulti = stod(now.second);
         } else{
             if (lastMultiOP == "*"){
-                TerminalExpression x(curMulti);
-                TerminalExpression y(stod(now.second));
-                MultiplyExpression mult(&x,&y);
+                TerminalExpression<long double> x(curMulti);
+                TerminalExpression<long double> y(stod(now.second));
+                MultiplyExpression<long double> mult(&x,&y);
                 curMulti = mult.solve();
             } else{
-                TerminalExpression x(curMulti);
-                TerminalExpression y(stod(now.second));
-                DivideExpression div(&x,&y);
+                TerminalExpression<long double> x(curMulti);
+                TerminalExpression<long double> y(stod(now.second));
+                DivideExpression<long double> div(&x,&y);
                 curMulti = div.solve();
             }
             lastMultiOP = "";
@@ -333,14 +333,14 @@ long double Calculator::DisplayValue(){
     } else if (now.first == 1 && (id & 1)){
         if (now.second == "+" || now.second == "-"){
             if (lastSumOP == "+" || lastSumOP == ""){
-                TerminalExpression x(curSum);
-                TerminalExpression y(curMulti);
-                AddExpression add(&x,&y);
+                TerminalExpression<long double> x(curSum);
+                TerminalExpression<long double> y(curMulti);
+                AddExpression<long double> add(&x,&y);
                 curSum = add.solve();
             } else{
-                TerminalExpression x(curSum);
-                TerminalExpression y(curMulti);
-                SubtractExpression sub(&x,&y);
+                TerminalExpression<long double> x(curSum);
+                TerminalExpression<long double> y(curMulti);
+                SubtractExpression<long double> sub(&x,&y);
                 curSum = sub.solve();
             }
             lastMultiOP = "";
@@ -352,16 +352,17 @@ long double Calculator::DisplayValue(){
         throw new ConsecutiveSymbol();
     }
     if (lastSumOP == "+" || lastSumOP == ""){
-        TerminalExpression x(curSum);
-        TerminalExpression y(curMulti);
-        AddExpression add(&x,&y);
+        TerminalExpression<long double> x(curSum);
+        TerminalExpression<long double> y(curMulti);
+        AddExpression<long double> add(&x,&y);
         curSum = add.solve();
     } else{
-        TerminalExpression x(curSum);
-        TerminalExpression y(curMulti);
-        SubtractExpression sub(&x,&y);
+        TerminalExpression<long double> x(curSum);
+        TerminalExpression<long double> y(curMulti);
+        SubtractExpression<long double> sub(&x,&y);
         curSum = sub.solve();
     }
 
     return curSum;
 }
+
