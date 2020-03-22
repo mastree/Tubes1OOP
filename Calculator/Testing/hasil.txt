@@ -1,0 +1,79 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+testing.exe is a Catch v2.11.3 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Parser running
+-------------------------------------------------------------------------------
+testing.cpp:59
+...............................................................................
+
+testing.cpp:61: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(0, (string)"1") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:62: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(1, (string)"+") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:63: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(0, (string)"-123") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:64: PASSED:
+  REQUIRE( isi.getLen() == 6 )
+with expansion:
+  6 == 6
+
+testing.cpp:65: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(1, (string)"-") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:66: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(0, (string)"13") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:67: PASSED:
+  REQUIRE( isi.empty() == false )
+with expansion:
+  false == false
+
+testing.cpp:68: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(1, (string)"*") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:69: PASSED:
+  REQUIRE( isi.getLen() == 3 )
+with expansion:
+  3 == 3
+
+testing.cpp:70: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(0, (string)"1.00") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:71: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(1, (string)"-") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:72: PASSED:
+  REQUIRE( isi.nextContent() == make_pair(0, (string)"5") )
+with expansion:
+  {?} == {?}
+
+testing.cpp:73: PASSED:
+  REQUIRE( isi.empty() == true )
+with expansion:
+  true == true
+
+===============================================================================
+All tests passed (13 assertions in 1 test case)
+
