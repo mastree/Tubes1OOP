@@ -18,9 +18,14 @@
         │   │   ├── Expression.h
         │   ├── Parser
         │   │   ├── CalcParser.h
+        │   ├── Testing
+        │   │   ├── testing.cpp
+        │   │   ├── testing.exe
+        │   │   ├── hasil.txt
         │   ├── calculator.cpp
         │   ├── calculator.h
         │   ├── calculator.ui
+        │   ├── catch.cpp
         │   ├── CMakeList.txt
         │   ├── CMakeList.txt.user
         │   ├── main.cpp

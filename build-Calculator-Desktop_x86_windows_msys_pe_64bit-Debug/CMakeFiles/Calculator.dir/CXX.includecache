@@ -1428,23 +1428,3 @@ QMainWindow
 bits/stdc++.h
 -
 
-D:/_OOP/Tubes1OOP/Calculator/main.cpp
-calculator.h
-D:/_OOP/Tubes1OOP/Calculator/calculator.h
-QApplication
--
-
-D:/_OOP/Tubes1OOP/build-Calculator-Desktop_x86_windows_msys_pe_64bit-Debug/Calculator_autogen/EWIEGA46WW/moc_calculator.cpp
-memory
--
-calculator.h
-D:/_OOP/Tubes1OOP/build-Calculator-Desktop_x86_windows_msys_pe_64bit-Debug/Calculator_autogen/EWIEGA46WW/calculator.h
-QtCore/qbytearray.h
--
-QtCore/qmetatype.h
--
-
-D:/_OOP/Tubes1OOP/build-Calculator-Desktop_x86_windows_msys_pe_64bit-Debug/Calculator_autogen/mocs_compilation.cpp
-EWIEGA46WW/moc_calculator.cpp
-D:/_OOP/Tubes1OOP/build-Calculator-Desktop_x86_windows_msys_pe_64bit-Debug/Calculator_autogen/EWIEGA46WW/moc_calculator.cpp
-

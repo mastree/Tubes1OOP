@@ -123,31 +123,39 @@ void Calculator::UnaryOpPressed(){
     }
 
     curVal = curSum;
-    if (op == "sqrt"){
-        TerminalExpression<long double> x(curVal);
-        SquareRootExpression<long double> sq(&x);
-        curVal = sq.solve();
-    } else if (op == "sin"){
-        curVal = curVal * PI / 180;
-        TerminalExpression<long double> x(curVal);
-        SinExpression<long double> sin(&x);
-        curVal = sin.solve();
-    } else if (op == "cos"){
-        curVal = curVal * PI / 180;
-        TerminalExpression<long double> x(curVal);
-        CosExpression<long double> cos(&x);
-        curVal = cos.solve();
-    } else if (op == "tan"){
-        curVal = curVal * PI / 180;
-        TerminalExpression<long double> x(curVal);
-        TanExpression<long double> tan(&x);
-        curVal = tan.solve();
-    } else{
-        curVal = curVal * PI / 180;
-        TerminalExpression<long double> x(curVal);
-        CotExpression<long double> cot(&x);
-        curVal = cot.solve();
+    try{
+        if (op == "sqrt"){
+            TerminalExpression<long double> x(curVal);
+            SquareRootExpression<long double> sq(&x);
+            curVal = sq.solve();
+        } else if (op == "sin"){
+            curVal = curVal * PI / 180;
+            TerminalExpression<long double> x(curVal);
+            SinExpression<long double> sin(&x);
+            curVal = sin.solve();
+        } else if (op == "cos"){
+            curVal = curVal * PI / 180;
+            TerminalExpression<long double> x(curVal);
+            CosExpression<long double> cos(&x);
+            curVal = cos.solve();
+        } else if (op == "tan"){
+            curVal = curVal * PI / 180;
+            TerminalExpression<long double> x(curVal);
+            TanExpression<long double> tan(&x);
+            curVal = tan.solve();
+        } else{
+            curVal = curVal * PI / 180;
+            TerminalExpression<long double> x(curVal);
+            CotExpression<long double> cot(&x);
+            curVal = cot.solve();
+        }
+    } catch (BaseException * er){
+        QString mass = "Error: " + QString::fromStdString(er -> errorMessage());
+        ui -> Display -> setText(mass);
+        isError = 1;
+        return;
     }
+
     lastAns = curVal;
     ui -> Display -> setText(QString::number(curVal, 'g', 16));
     clearDisplay = 0;
